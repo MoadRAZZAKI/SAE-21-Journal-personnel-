@@ -163,6 +163,40 @@
 
 ## configuration du protocole SSH sur le routeur : 
 
+
+
+* voici les options que j'ai ajouté au routeur pour configurer le service ssh :
+
+> La commande suivante permet d'activer le service ssh sur le routeur :
+ 
+        ip ssh version 2
+
+> les évènements associés aux connexions ssh sont enregistrés dans les logs: 
+        ip ssh logging events
+        
+        
+> Un timeout de 60 secondes est ajouté en cas d'inactivité durant l'authentification.
+
+        ip ssh time-out 60
+
+> On laisse trois essais pour la connexion au routeur. Suite à ces essais, la connexion est fermée.
+        
+        ip ssh authentication-retries 3
+
+
+
+> ensuite j'ai ajouté cette option pour crypter le mot de passe:
+
+        service password-encryption
+
+
+
+* On crée un utilisateur admin avec le mot de passe admin
+
+        username admin password 0 admin
+
+
+
 * On rajoute, en utilisant cette commande, les privilèges à l'utilisateur admin du routeur 
 
         username admin privile 15 pass admin

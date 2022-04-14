@@ -46,7 +46,7 @@
         
         
 
-### Séance du 08/04/2022 (TD encadrée) :
+### Séance du 08/04/2022 (TD encadrée) configuration des VLAN sur le switch:
 ---
 
 * Pendant cette séance nous avons configuré le NAT sur le routeur
@@ -79,5 +79,66 @@
         wr mem
         
         
+#Configuration des vlan :
 
+
+
+* Vlan 1 :  
+
+
+        conf t
+        interface FastEthernet 0/0.1
+        encapsulation dot1Q 10
+        ip address 192.168.10.1 255.255.255.248
+        exit
+   
+   
+* Vlan 2:  
+
+
+        conf t
+        interface FastEthernet 0/0.2
+        encapsulation dot1Q 20
+        ip address 192.168.20.1 255.255.255.248
+        exit
   
+  
+* Vlan 3  
+
+
+        conf t
+        interface FastEthernet 0/0.3
+        encapsulation dot1Q 3
+        ip address 192.168.30.1 255.255.255.248
+        exit
+        
+
+#configuration du pool DHCP pour chaque vlan :
+
+
+* Vlan 1 :  
+
+
+        ip dhcp pool VLAN10
+        network 192.168.10.0 255.255.255.248
+        exit
+   
+   
+* Vlan 2:  
+
+
+        ip dhcp pool VLAN20
+        network 192.168.20.0 255.255.255.248
+        exit
+  
+  
+* Vlan 3  
+
+
+        ip dhcp pool VLAN20
+        network 192.168.20.0 255.255.255.248
+        exit
+        
+        
+        
+

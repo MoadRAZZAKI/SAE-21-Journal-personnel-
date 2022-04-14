@@ -181,6 +181,16 @@
         line vty 0 15
         
         
+        
+* La commande “transport input ssh” définit quel protocole a le droit d'utiliser ces lignes vty. Par défaut, tous les protocoles ont le droit dont telnet et ssh. Cette commande permet de restreindre en précisant que seul ssh a le droit d'utiliser les lignes vty.
   
         transport input ssh
+        
+* Login local, signifie que l'authentification utilise des informations d'identification configurées localement en utilisant la commande "username <admin> privilege <15> password 0 admin" en mode de configuration globale.
+
+ 
         login local
+ 
+ 
+ 
+ 

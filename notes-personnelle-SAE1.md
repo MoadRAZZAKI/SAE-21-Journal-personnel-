@@ -144,4 +144,18 @@
         
         
         
+## configuration des ACL pour plus de sécurité : 
+
+* tout d'abord j'ai nommé la régle ACL et ensuite j'ai définit ce qu’elle doit filtrer. 
+
+        R1(config)#ip access-list extended firsttothird ( du vlan 10 vers le vlan 30 )
+        R1(config-ext-nacl)#deny ip 192.168.10.0 0.0.0.7 192.168.30.0 0.0.0.7
+        R1(config-ext-nacl)#permit ip any any
+        
+* ensuite pour appliquer la règle sur une interface j'ai utilise la syntaxe suivante : 
+
+        R1(config)#interface fastEthernet 0/0.1
+        R1(config-subif)#ip access-group firsttothird in
+        R1(config-subif)#ip access-group firsttothird out
+
 

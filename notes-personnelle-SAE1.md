@@ -197,7 +197,7 @@
  
  
        KexAlgorithms +diffie-hellman-group1-sha1,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1
-      Ciphers aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+       Ciphers aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
  
  
  * En effet, la ligne KexAlgorithms renseigne les méthodes d'échange de clés qui sont utilisées pour générer des clés par connexion . Tandis que la ligne Ciphers permet de configurer les ciphers utilisés pour chiffrer la connexion.

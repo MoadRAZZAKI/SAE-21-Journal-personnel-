@@ -191,7 +191,7 @@
  
         login local
  
- 
+ --------------------------------------------------------------------------------------
  
  * Ensuite sur chaque PC des trois VLAN j'ai modifié le fichier /etc/ssh/ssh_config est j'ai rajouter les lignes :
  
@@ -201,3 +201,29 @@
  
  
  * En effet, la ligne KexAlgorithms renseigne les méthodes d'échange de clés qui sont utilisées pour générer des clés par connexion . Tandis que la ligne Ciphers permet de configurer les ciphers utilisés pour chiffrer la connexion.
+ 
+ 
+ 
+ 
+ 
+ ------------------------------------------------------------------------------------
+ 
+ 
+ 
+ * Par la suite, je me suis rendu sur le fichier /etc/ssh/sshd_config et j'ai décommenté les lignes suivantes pour permettre aux utilisateurs de mon réseau interne de faire des connexions à distance en utilisant le service ssh.
+ 
+ 
+       PubkeyAuthentication yes
+       PasswordAuthentication yes
+       ChallengeResponseAuthentication no
+ 
+ * Il faut noter qu'après chaque modification des fichiers ssh, soit ssh_config ou sshd_config, il est absolument nécessaire d'éxecuter la commande suivante pour que les modifications puissent être prises en compte, et puis vérifier le status du service ssh sur la machine configurée :
+ 
+ 
+       service ssh restart
+       service ssh status
+       
+ * En fait, la commande "service" et "systemctl" fonctionnent de la même manière, la seule différence ici est la compatibilité de la commande avec les utilitaires qui sont responsables du fonctionnement du système d'exploitation de mes machines. Après des recherches que j'ai fait sur internet, j'ai trouvé que la commande service permet d'exécuter le script d'initialisation de SystemV qui est utilisé par les anciennes distributions Linux.
+       
+       
+ 

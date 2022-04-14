@@ -172,6 +172,7 @@
         ip ssh version 2
 
 > les évènements associés aux connexions ssh sont enregistrés dans les logs: 
+        
         ip ssh logging events
         
         

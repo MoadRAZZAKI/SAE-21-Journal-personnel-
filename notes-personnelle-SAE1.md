@@ -1,4 +1,4 @@
- # Scéance 1 : configuration du routeur sur GNS3 : 
+ ### Scéance 1 : configuration du routeur sur GNS3 : 
 
  durant cette première scéance de SAE j'ai configuré mon routeur cisco sur GNS3, j'ai commencé d'abord par configurer les adresses IP des interfaces de mon routeur : 
 

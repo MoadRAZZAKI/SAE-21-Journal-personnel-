@@ -79,7 +79,7 @@
         wr mem
         
         
-#Configuration des vlan :
+## Configuration des vlan :
 
 
 
@@ -113,7 +113,7 @@
         exit
         
 
-#configuration du pool DHCP pour chaque vlan :
+## Configuration du pool DHCP pour chaque vlan :
 
 
 * Vlan 1 :  

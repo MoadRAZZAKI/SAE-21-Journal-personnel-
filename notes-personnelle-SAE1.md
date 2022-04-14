@@ -159,3 +159,28 @@
         R1(config-subif)#ip access-group firsttothird out
 
 
+
+
+## configuration du protocole SSH sur le routeur : 
+
+* On rajoute, en utilisant cette commande, les privilèges à l'utilisateur admin du routeur 
+
+        username admin privile 15 pass admin
+
+* Cette commande permet d'effacer les clefs RSA, en effet, dû à une erreur de ma part, le routeur refusait les connexions des utilisateurs de mon parc informatique 
+
+        crypto key zeroize rsa
+        
+* La commande suivante permet de créer une nouvelle clef. Je dois préciser que la taille de la clef que j'ai choisi est 1024 bits
+
+        crypto key generate rsa 
+        
+        
+* Le terme "vty" signifie Virtual teletype. VTY est un port virtuel qui est utilisé pour obtenir un accès Telnet ou SSH à l'appareil.VTY est uniquement utilisé pour les connexions entrantes à l'appareil. Ces connexions sont toutes virtuelles et aucun matériel ne leur est associé. En fait, nous pouvons avoir des ports de connexion jusqu'à 16 qui tournent simultanaiment (0 - 15)
+ 
+        line vty 0 15
+        
+        
+  
+        transport input ssh
+        login local

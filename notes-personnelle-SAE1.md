@@ -121,6 +121,7 @@
 
         ip dhcp pool VLAN10
         network 192.168.10.0 255.255.255.248
+        default-router 192.168.10.1
         exit
    
    
@@ -129,6 +130,7 @@
 
         ip dhcp pool VLAN20
         network 192.168.20.0 255.255.255.248
+        default-router 192.168.20.1
         exit
   
   
@@ -137,6 +139,7 @@
 
         ip dhcp pool VLAN20
         network 192.168.20.0 255.255.255.248
+        default-router 192.168.30.1
         exit
         
         

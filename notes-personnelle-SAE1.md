@@ -263,7 +263,7 @@
 
  
 ## Restreindre les utilisateurs qui peuvent se connecter en SSH :
- 
+   
  
  > d'abord on ouvre le fichier sshd_config.
  
@@ -283,3 +283,6 @@
  > enfin on enregistre le fichier et on redémarre sshd.
  
        service sshd restart
+
+ 
+ > remarque : il faut ajouter ces configurations pour les PC du VLAN (30) système d'information

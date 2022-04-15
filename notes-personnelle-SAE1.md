@@ -286,3 +286,14 @@
 
  
  > remarque : il faut ajouter ces configurations pour les PC du VLAN (30) système d'information
+
+ 
+ 
+ ## configuration du serveur web :
+ 
+ 
+ * ÉTAPE 1 : j'ai mis mon code HTML dans un répertoire spécifique pour le déplacer après vers le répertoire /etc/www/html
+ 
+ * ÉTAPE 2 : ensuite je renome mon fichier HTML en index.html
+ 
+ * ÉTAPE

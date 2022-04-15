@@ -260,5 +260,26 @@
        
  * En fait, la commande "service" et "systemctl" fonctionnent de la même manière, la seule différence ici est la compatibilité de la commande avec les utilitaires qui sont responsables du fonctionnement du système d'exploitation de mes machines. Après des recherches que j'ai fait sur internet, j'ai trouvé que la commande service permet d'exécuter le script d'initialisation de SystemV qui est utilisé par les anciennes distributions Linux.
        
-       
+
  
+## Restreindre les utilisateurs qui peuvent se connecter en SSH :
+ 
+ 
+ > d'abord on ouvre le fichier sshd_config.
+ 
+       nano /etc/ssh/sshd_config
+ 
+ 
+> ensuite on ajoute ces lignes à la fin de notre fichier.
+ 
+       DenyUsers test
+       DenyGroups test
+
+       DenyUsers root
+       DenyGroups test
+
+       PermitRootLogin no
+
+ > enfin on enregistre le fichier et on redémarre sshd.
+ 
+       service sshd restart

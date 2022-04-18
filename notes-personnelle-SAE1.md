@@ -137,12 +137,18 @@
 * Vlan 3  
 
 
-        ip dhcp pool VLAN20
-        network 192.168.20.0 255.255.255.248
+        ip dhcp pool VLAN30
+        network 192.168.30.0 255.255.255.248
         default-router 192.168.30.1
         exit
         
-        
+* Vlan 4 
+
+      ip dhcp pool VLAN40
+      network 192.168.40.0 255.255.255.248
+      default-router 192.168.40.1
+      exit
+       
         
 ## configuration des ACL pour plus de sécurité : 
 

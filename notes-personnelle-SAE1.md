@@ -112,6 +112,19 @@
         ip address 192.168.30.1 255.255.255.248
         exit
         
+        
+        
+* Vlan 4  
+
+
+        conf t
+        interface FastEthernet 0/0.4
+        encapsulation dot1Q 4
+        ip address 192.168.40.1 255.255.255.248
+        exit
+        
+        
+        
 
 ## Configuration du pool DHCP pour chaque vlan :
 
@@ -144,10 +157,10 @@
         
 * Vlan 4 
 
-      ip dhcp pool VLAN40
-      network 192.168.40.0 255.255.255.248
-      default-router 192.168.40.1
-      exit
+        ip dhcp pool VLAN40
+        network 192.168.40.0 255.255.255.248
+        default-router 192.168.40.1
+        exit
        
         
 ## configuration des ACL pour plus de sécurité : 

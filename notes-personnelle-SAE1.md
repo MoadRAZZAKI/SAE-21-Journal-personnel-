@@ -311,8 +311,68 @@
  ## configuration du serveur web :
  
  
- * ÉTAPE 1 : j'ai mis mon code HTML dans un répertoire spécifique pour le déplacer après vers le répertoire /etc/www/html
+ * ÉTAPE 1 : j'ai mis mon code HTML dans un répertoire spécifique en utilisant la commande mkdir pour créer un nouveau répertoire pour le déplacer après vers le répertoire /etc/www/html :
  
- * ÉTAPE 2 : ensuite je renome mon fichier HTML en index.html
  
- * ÉTAPE
+ 
+       mkdir /repertoire 
+      
+       nano adminsae21.html ########## pour écrire le fichier html dans le répertoire 
+ 
+       mv /repertoire /var/www/html
+ 
+ 
+ 
+ * ÉTAPE 2 : ensuite j'ai renomme mon fichier HTML en index.html
+ 
+       cd /var/www/html/repertoire 
+     
+       mv adminsae21.html index.html 
+
+ 
+ * ÉTAPE 3 : on recopie le fichier de configuration /etc/apache2/sites-available/000-default.conf et on le renomme en adminsae21.conf en utilisant la commande cp :
+ 
+ 
+       cp 000-default.conf adminsae21.conf
+ 
+ 
+ * ÉTAPE 4 : ensuite, on modifie notre site en utilisant la commande, nano ,on change le server name par le nom de serveur que l’on veut et on change le répertoire de notre site en modifiant la ligne DocumentRoot :
+
+ 
+       <VirtualHost *:80>
+        
+        ServerName www.adminsae21.fr          
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+       </VirtualHost>
+
+ * ÉTAPE 5 : on active ensuite notre site en utilisant la commande a2ensite :
+ 
+        a2ensite adminsae21.conf
+     
+        systemctl reload apache2 ##### on utilise cette commande pour permettre la relecture des fichiers de configuration.
+ 
+ 
+ * ÉTAPE 6 : ensuite, on modifie notre répertoire /etc/hosts , et on met à la place de localhost notre nom de serveur que l’on a choisis tout à l’heure : 
+ 
+ 
+        #127.0.0.1       localhost
+        127.0.0.1        www.adminsae21.fr
+        10.213.22.1     232-22
+
+        # The following lines are desirable for IPv6 capable hosts
+        ::1     localhost ip6-localhost ip6-loopback
+        ff02::1 ip6-allnodes
+        ff02::2 ip6-allrouters
+ 
+ * ÉTAPE 7 : on reload le service apache2 en utilisant la commande systemctl reload :
+ 
+ 
+        systemctl reload apache2
+ 
+ 
+ 
+ 

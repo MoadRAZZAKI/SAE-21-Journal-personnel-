@@ -1,6 +1,18 @@
- ### Scéance 1 : configuration du routeur sur GNS3 : 
+ ### Scéance 1 ( Jeudi 23/03/2022 ) , Découvrir la SAE 21 :
+ 
+ 
+- Dans cette première scéance de SAE 21 , notre professeur nous a expliqué un peu l'objectif de cette SAE ainsi que le type du livrable que nous devons fournir, ensuite j'ai essayé de faire un schéma de cette manipulation en utilisant l'extension draw.io sur vscode :
+ 
+ 
 
- durant cette première scéance de SAE j'ai configuré mon routeur cisco sur GNS3, j'ai commencé d'abord par configurer les adresses IP des interfaces de mon routeur : 
+ 
+par la suite on s'est réparti les tâches, je me suis occupé de la partie virtuelle vu que je suis un peu à l'aise avec le logiciel de virtualisation GNS3 que l'on a utilisé pour la ressource R201, j'ai choisi GNS3 parceque ça permet d'installer tous les appareils autres que CISCO.
+ 
+ 
+ 
+ ### Scéance 2 ( Vendredi 08/04/2022 ) , configuration du routeur sur GNS3 : 
+
+- Durant cette première scéance de SAE j'ai configuré mon routeur cisco sur GNS3, j'ai commencé d'abord par configurer les adresses IP des interfaces de mon routeur : 
 
 > d'abord pour la patte interne du routeur, j'ai décidé de lui donner une adresse IP statiquement en utilisant ces commandes :
 
@@ -46,14 +58,14 @@
         
         
 
-### Séance du 08/04/2022 (TD encadrée) configuration des VLAN sur le switch:
+### Séance 3 ( Jeudi 14/04/2022 ) (TD encadré ), configuration des VLAN sur le switch:
 ---
 
-* Pendant cette séance nous avons configuré le NAT sur le routeur
+* Pendant cette séance j'ai configuré le NAT pour chaque VLAN sur le routeur
 * Configuration de la patte interne du routeur
 
         conf t
-        interface FastEthernet 0/0
+        interface FastEthernet 0/0.1 ##### je précise mon interface, dans ce cas c'est le VLAN10
         ip nat inside
         exit
 
@@ -66,12 +78,12 @@
 
 * Configuration de l'ACL contenant une liste des adresses source interne qui seront traduite
 
-        access-list 1 permit 192.168.0.0 0.0.255.255
+        access-list 1 permit 192.168.10.0 0.0.0.7 ######## ici je précise la plage d'adresse pour laquelle je vais activer mon NAT
 
 * Configuration du pool d'adresses IP globale
 
-        ip nat pool POOL 10.213.0.0 10.213.255.254 netmask 255.255.0.0
-
+        ip nat pool POOL 10.213.0.0 10.213.255.254 netmask 255.255.0.0  ####### et ensuite j'ai spécifié la plage inclusive d'adresses dans le pool NAT
+        
 * Activation du NAT dynamique
 
         ip nat inside source list 1 pool POOL
@@ -79,7 +91,7 @@
         wr mem
         
         
-## Configuration des vlan :
+## Configuration des vlan sur le routeur:
 
 
 
@@ -126,7 +138,7 @@
         
         
 
-## Configuration du pool DHCP pour chaque vlan :
+## Scéance 4 ( Vendredi 15/04/2022 ) (TD non-encadré + TP encadré ) Configuration du pool DHCP pour chaque vlan :
 
 
 * Vlan 1 :  
@@ -178,10 +190,7 @@
         R1(config-subif)#ip access-group firsttothird out
 
 
-
-
 ## configuration du protocole SSH sur le routeur : 
-
 
 
 * voici les options que j'ai ajouté au routeur pour configurer le service ssh :
@@ -306,6 +315,88 @@
  
  > remarque : il faut ajouter ces configurations pour les PC du VLAN (30) système d'information
 
+ 
+ 
+## Scéance 5 ( Vendredi 21/04/2022 ) (TD non-encadré + encadré ) mise à jour des règles ACL sur le routeur : 
+ 
+ 
+conf t
+ip access-list extended VLAN10INOUT
+permit udp any any eq 67  ##### cette commande permet de laisser passer tout les paquet UDP qui provient du port 67 
+permit udp any any eq 68   ##### cette commande permet de laisser passer tout les paquet UDP qui provient du port 68
+permit ip host 192.168.10.1 any
+permit tcp 192.168.20.0 0.0.0.7 192.168.10.0 0.0.0.7 eq 22
+deny ip 192.168.30.0 0.0.0.7 192.168.10.0 0.0.0.7
+permit tcp any any eq 80
+permit tcp any any eq 443
+permit icmp any any 
+permit ip any any 
+permit tcp 192.168.10.0 0.0.0.7 192.168.20.0 0.0.0.7  established
+permit tcp any any eq 22
+exit
+ 
+ 
+ip access-list extended VLAN20INOUT
+permit udp any any eq 67
+permit udp any any eq 68
+permit ip host 192.168.20.1 any
+permit tcp 192.168.10.0 0.0.0.7 192.168.20.0 0.0.0.7  eq 22 established
+permit tcp 192.168.30.0 0.0.0.7 192.168.20.0 0.0.0.7  eq 22 established
+permit tcp 192.168.10.0 0.0.0.7 any established
+permit tcp 192.168.30.0 0.0.0.7 any established
+permit tcp any any eq 80
+permit tcp any any eq 443
+permit icmp any any
+permit ip any any
+permit tcp any any eq 22
+exit
+ 
+ 
+ip access-list extended VLAN30INOUT
+permit udp any any eq 67
+permit udp any any eq 68
+permit ip host 192.168.30.1 any
+permit tcp 192.168.20.0 0.0.0.7 192.168.30.0 0.0.0.7 eq 22
+deny ip 192.168.10.0 0.0.0.7 192.168.30.0 0.0.0.7
+permit tcp any any eq 80
+permit tcp any any eq 443
+permit icmp any any 
+permit ip any any
+permit tcp 192.168.30.0 0.0.0.7 192.168.20.0 0.0.0.7  established
+permit tcp any any eq 22
+exit
+ 
+ 
+ip access-list extended VLAN40INOUT
+permit udp any any eq 67
+permit udp any any eq 68
+permit ip host 192.168.40.1 any
+permit tcp 192.168.10.0 0.0.0.7 any eq 80
+permit tcp 192.168.20.0 0.0.0.7 any eq 80
+permit tcp 192.168.30.0 0.0.0.7 any eq 80
+permit icmp any any
+permit ip any any
+permit tcp any any established
+exit
+ 
+ 
+interface FastEThernet 0/0.1
+ip access-group VLAN10INOUT in
+ip access-group VLAN10INOUT out
+interface FastEThernet 0/0.2
+ip access-group VLAN20INOUT in
+ip access-group VLAN20INOUT out
+interface FastEThernet 0/0.3
+ip access-group VLAN30INOUT in
+ip access-group VLAN30INOUT out
+interface FastEThernet 0/0.4
+ip access-group VLAN40INOUT in
+ip access-group VLAN40INOUT out
+end
+wr mem
+ 
+ 
+ 
  
  
  ## configuration du serveur web :

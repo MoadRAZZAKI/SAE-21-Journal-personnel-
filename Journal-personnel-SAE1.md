@@ -4,7 +4,7 @@
 - Dans cette première scéance de SAE 21 , notre professeur nous a expliqué un peu l'objectif de cette SAE ainsi que le type du livrable que nous devons fournir, ensuite j'ai essayé de faire un schéma de cette manipulation en utilisant l'extension draw.io sur vscode :
  
  
-
+<img src=https://github.com/MoadRAZZAKI/SAE-21-memo-personnelle-/blob/main/SAE21.png width=20px>
  
 par la suite on s'est réparti les tâches, je me suis occupé de la partie virtuelle vu que je suis un peu à l'aise avec le logiciel de virtualisation GNS3 que l'on a utilisé pour la ressource R201, j'ai choisi GNS3 parceque ça permet d'installer tous les appareils autres que CISCO.
  

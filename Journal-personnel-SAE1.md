@@ -320,81 +320,81 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 ## Scéance 5 ( Vendredi 21/04/2022 ) (TD non-encadré + encadré ) mise à jour des règles ACL sur le routeur : 
  
  
-conf t
-ip access-list extended VLAN10INOUT
-permit udp any any eq 67  ##### cette commande permet de laisser passer tout les paquet UDP qui provient du port 67 
-permit udp any any eq 68   ##### cette commande permet de laisser passer tout les paquet UDP qui provient du port 68
-permit ip host 192.168.10.1 any
-permit tcp 192.168.20.0 0.0.0.7 192.168.10.0 0.0.0.7 eq 22
-deny ip 192.168.30.0 0.0.0.7 192.168.10.0 0.0.0.7
-permit tcp any any eq 80
-permit tcp any any eq 443
-permit icmp any any 
-permit ip any any 
-permit tcp 192.168.10.0 0.0.0.7 192.168.20.0 0.0.0.7  established
-permit tcp any any eq 22
-exit
+       conf t
+       ip access-list extended VLAN10INOUT
+       permit udp any any eq 67  ##### cette commande permet de laisser passer tout les paquet UDP qui provient du port 67 
+       permit udp any any eq 68   ##### cette commande permet de laisser passer tout les paquet UDP qui provient du port 68
+       permit ip host 192.168.10.1 any
+       permit tcp 192.168.20.0 0.0.0.7 192.168.10.0 0.0.0.7 eq 22
+       deny ip 192.168.30.0 0.0.0.7 192.168.10.0 0.0.0.7
+       permit tcp any any eq 80
+       permit tcp any any eq 443
+       permit icmp any any 
+       permit ip any any 
+       permit tcp 192.168.10.0 0.0.0.7 192.168.20.0 0.0.0.7  established
+       permit tcp any any eq 22
+       exit
  
  
-ip access-list extended VLAN20INOUT
-permit udp any any eq 67
-permit udp any any eq 68
-permit ip host 192.168.20.1 any
-permit tcp 192.168.10.0 0.0.0.7 192.168.20.0 0.0.0.7  eq 22 established
-permit tcp 192.168.30.0 0.0.0.7 192.168.20.0 0.0.0.7  eq 22 established
-permit tcp 192.168.10.0 0.0.0.7 any established
-permit tcp 192.168.30.0 0.0.0.7 any established
-permit tcp any any eq 80
-permit tcp any any eq 443
-permit icmp any any
-permit ip any any
-permit tcp any any eq 22
-exit
+       ip access-list extended VLAN20INOUT
+       permit udp any any eq 67
+       permit udp any any eq 68
+       permit ip host 192.168.20.1 any
+       permit tcp 192.168.10.0 0.0.0.7 192.168.20.0 0.0.0.7  eq 22 established
+       permit tcp 192.168.30.0 0.0.0.7 192.168.20.0 0.0.0.7  eq 22 established
+       permit tcp 192.168.10.0 0.0.0.7 any established
+       permit tcp 192.168.30.0 0.0.0.7 any established
+       permit tcp any any eq 80
+       permit tcp any any eq 443
+       permit icmp any any
+       permit ip any any
+       permit tcp any any eq 22
+       exit
+
+ 
+       ip access-list extended VLAN30INOUT
+       permit udp any any eq 67
+       permit udp any any eq 68
+       permit ip host 192.168.30.1 any
+       permit tcp 192.168.20.0 0.0.0.7 192.168.30.0 0.0.0.7 eq 22
+       deny ip 192.168.10.0 0.0.0.7 192.168.30.0 0.0.0.7
+       permit tcp any any eq 80
+       permit tcp any any eq 443
+       permit icmp any any 
+       permit ip any any
+       permit tcp 192.168.30.0 0.0.0.7 192.168.20.0 0.0.0.7  established
+       permit tcp any any eq 22
+       exit
  
  
-ip access-list extended VLAN30INOUT
-permit udp any any eq 67
-permit udp any any eq 68
-permit ip host 192.168.30.1 any
-permit tcp 192.168.20.0 0.0.0.7 192.168.30.0 0.0.0.7 eq 22
-deny ip 192.168.10.0 0.0.0.7 192.168.30.0 0.0.0.7
-permit tcp any any eq 80
-permit tcp any any eq 443
-permit icmp any any 
-permit ip any any
-permit tcp 192.168.30.0 0.0.0.7 192.168.20.0 0.0.0.7  established
-permit tcp any any eq 22
-exit
- 
- 
-ip access-list extended VLAN40INOUT
-permit udp any any eq 67
-permit udp any any eq 68
-permit ip host 192.168.40.1 any
-permit tcp 192.168.10.0 0.0.0.7 any eq 80
-permit tcp 192.168.20.0 0.0.0.7 any eq 80
-permit tcp 192.168.30.0 0.0.0.7 any eq 80
-permit icmp any any
-permit ip any any
-permit tcp any any established
-exit
- 
- 
-interface FastEThernet 0/0.1
-ip access-group VLAN10INOUT in
-ip access-group VLAN10INOUT out
-interface FastEThernet 0/0.2
-ip access-group VLAN20INOUT in
-ip access-group VLAN20INOUT out
-interface FastEThernet 0/0.3
-ip access-group VLAN30INOUT in
-ip access-group VLAN30INOUT out
-interface FastEThernet 0/0.4
-ip access-group VLAN40INOUT in
-ip access-group VLAN40INOUT out
-end
-wr mem
- 
+       ip access-list extended VLAN40INOUT
+       permit udp any any eq 67
+       permit udp any any eq 68
+       permit ip host 192.168.40.1 any
+       permit tcp 192.168.10.0 0.0.0.7 any eq 80
+       permit tcp 192.168.20.0 0.0.0.7 any eq 80
+       permit tcp 192.168.30.0 0.0.0.7 any eq 80
+       permit icmp any any
+       permit ip any any
+       permit tcp any any established
+       exit
+
+
+       interface FastEThernet 0/0.1
+       ip access-group VLAN10INOUT in
+       ip access-group VLAN10INOUT out
+       interface FastEThernet 0/0.2
+       ip access-group VLAN20INOUT in
+       ip access-group VLAN20INOUT out
+       interface FastEThernet 0/0.3
+       ip access-group VLAN30INOUT in
+       ip access-group VLAN30INOUT out
+       interface FastEThernet 0/0.4
+       ip access-group VLAN40INOUT in
+       ip access-group VLAN40INOUT out
+       end
+       wr mem
+
  
  
  

@@ -467,3 +467,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  
  
+<br/>
+<br/>
+ 
+<center><p>2022 &copy; Moad RAZZAKI -<span style="color:#3DFF05"> Tous droits réservés</span></p></center>

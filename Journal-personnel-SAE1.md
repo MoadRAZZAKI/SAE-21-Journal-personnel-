@@ -317,7 +317,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 
  
  
-## Scéance 5 ( Vendredi 21/04/2022 ) (TD non-encadré + encadré ) mise à jour des règles ACL sur le routeur : 
+## Scéance 5 ( Vendredi 21/04/2022 ) (TD non-encadré + encadré ) mise à jour des règles ACL sur le routeur du réseau virtuel : 
  
  
        conf t

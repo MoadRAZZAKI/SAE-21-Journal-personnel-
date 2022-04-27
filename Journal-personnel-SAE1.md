@@ -465,6 +465,13 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         systemctl reload apache2
  
  
+ ## Scéance 6 ( Lundi 25/04/2022 ) configuration du Firewall du routeur :
+ 
+ 
+* Dans cette scéance , je me suis concentré sur la configuration du firewall de mon routeur mikrotik qui est relié au réseau de la salle, donc j'ai commencé par déterminer les trames qu'il faut laisser traverser notre routeur externe ainsi que les ports de ces paquets , ensuite j'ai regardé une vidéo sur les actions et les chain dans les filtres :
+ 
+ <img src=https://github.com/MoadRAZZAKI/SAE-21-memo-personnelle-/blob/main/router_config_moad_razzaki.png width=2000px margin-right=-5px>
+ 
  
  
 <br/>

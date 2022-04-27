@@ -1,16 +1,18 @@
- ### Scéance 1 ( Jeudi 23/03/2022 ) , Découvrir la SAE 21 :
+ ## Scéance 1 ( Jeudi 23/03/2022 ) , Découvrir la SAE 21 :
  
+ <br/>
  
 - Dans cette première scéance de SAE 21 , notre professeur nous a expliqué un peu l'objectif de cette SAE ainsi que le type du livrable que nous devons fournir, ensuite j'ai essayé de faire un schéma de cette manipulation en utilisant l'extension draw.io sur vscode :
- 
+ <br/>
  
 <img src=https://github.com/MoadRAZZAKI/SAE-21-memo-personnelle-/blob/main/SAE21.png width=2000px margin-right=-5px>
- 
+ <br/>
 par la suite on s'est réparti les tâches, je me suis occupé de la partie virtuelle vu que je suis un peu à l'aise avec le logiciel de virtualisation GNS3 que l'on a utilisé pour la ressource R201, j'ai choisi GNS3 parceque ça permet d'installer tous les appareils autres que CISCO.
  
  
+ <br/>
  
- ### Scéance 2 ( Vendredi 08/04/2022 ) , configuration du routeur sur GNS3 : 
+ ## Scéance 2 ( Vendredi 08/04/2022 ) , configuration du routeur sur GNS3 : 
 
 - Durant cette première scéance de SAE j'ai configuré mon routeur cisco sur GNS3, j'ai commencé d'abord par configurer les adresses IP des interfaces de mon routeur : 
 
@@ -57,8 +59,9 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         wr mem
         
         
+<br/> 
 
-### Séance 3 ( Jeudi 14/04/2022 ) (TD encadré ), configuration des VLAN sur le switch:
+## Séance 3 ( Jeudi 14/04/2022 ) (TD encadré ), configuration des VLAN sur le switch:
 ---
 
 * Pendant cette séance j'ai configuré le NAT pour chaque VLAN sur le routeur
@@ -89,11 +92,12 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         ip nat inside source list 1 pool POOL
         exit
         wr mem
-        
+    
+<br/>    
         
 ## Configuration des vlan sur le routeur:
 
-
+<br/>
 
 * Vlan 1 :  
 
@@ -136,10 +140,11 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         exit
         
         
-        
+<br/>        
 
 ## Scéance 4 ( Vendredi 15/04/2022 ) (TD non-encadré + TP encadré ) Configuration du pool DHCP pour chaque vlan :
 
+<br/>
 
 * Vlan 1 :  
 
@@ -174,8 +179,12 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         default-router 192.168.40.1
         exit
        
-        
+  
+<br/>
+
 ## configuration des ACL pour plus de sécurité : 
+
+<br/>
 
 * tout d'abord j'ai nommé la régle ACL et ensuite j'ai définit ce qu’elle doit filtrer. 
 
@@ -189,9 +198,11 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         R1(config-subif)#ip access-group firsttothird in
         R1(config-subif)#ip access-group firsttothird out
 
+<br/>
 
 ## configuration du protocole SSH sur le routeur : 
 
+<br/>
 
 * voici les options que j'ai ajouté au routeur pour configurer le service ssh :
 
@@ -289,7 +300,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  * En fait, la commande "service" et "systemctl" fonctionnent de la même manière, la seule différence ici est la compatibilité de la commande avec les utilitaires qui sont responsables du fonctionnement du système d'exploitation de mes machines. Après des recherches que j'ai fait sur internet, j'ai trouvé que la commande service permet d'exécuter le script d'initialisation de SystemV qui est utilisé par les anciennes distributions Linux.
        
 
- 
+ <br/>
 ## Restreindre les utilisateurs qui peuvent se connecter en SSH :
    
  
@@ -316,6 +327,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  > remarque : il faut ajouter ces configurations pour les PC du VLAN (30) système d'information
 
  
+ <br/>
  
 ## Scéance 5 ( Vendredi 21/04/2022 ) (TD non-encadré + encadré ) mise à jour des règles ACL sur le routeur du réseau virtuel : 
  
@@ -397,11 +409,11 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 
  
  
- 
+ <br/>
  
  ## configuration du serveur web :
  
- 
+ <br/>
  * ÉTAPE 1 : j'ai mis mon code HTML dans un répertoire spécifique en utilisant la commande mkdir pour créer un nouveau répertoire pour le déplacer après vers le répertoire /etc/www/html :
  
  
@@ -463,11 +475,11 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  
         systemctl reload apache2
- 
+ <br/>
  
  ## Scéance 6 ( Lundi 25/04/2022 ) configuration du Firewall du routeur :
  
- 
+ <br/>
 * Dans cette scéance , je me suis concentré sur la configuration du firewall de mon routeur mikrotik qui est relié au réseau de la salle, donc j'ai commencé par déterminer les trames qu'il faut laisser traverser notre routeur externe ainsi que les ports de ces paquets , ensuite j'ai regardé une vidéo sur les actions et les chain dans les filtres :
  
  
@@ -476,10 +488,9 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  <br/>
  
  > comme vous pouvez le remarquer , pour tout les paquets que j'ai laissé traverser mon routeur j'ai choisi comme chain forward : car quand j'ai fait mes recherches j'ai compris qu'il existe trois types de chaine sur le firwall du routeur mikrotik :
- 
-- INPUT (paquets à destination du firewall embarqué),
-- OUTPUT (paquets émis par le firewall),
-- FORWARD (paquets qui traversent le firewall d'une interface vers une autre).
+ - INPUT (paquets à destination du firewall embarqué),
+ - OUTPUT (paquets émis par le firewall),
+ - FORWARD (paquets qui traversent le firewall d'une interface vers une autre).
  
   <br/>
  

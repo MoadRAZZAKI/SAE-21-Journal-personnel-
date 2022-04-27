@@ -415,13 +415,14 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  ## *Configuration du serveur web :*
  
  <br/>
+ 
  * ÉTAPE 1 : j'ai mis mon code HTML dans un répertoire spécifique en utilisant la commande mkdir pour créer un nouveau répertoire pour le déplacer après vers le répertoire /etc/www/html :
  
  
  
        mkdir /repertoire 
       
-       nano adminsae21.html ########## pour écrire le fichier html dans le répertoire 
+       nano cyberbridge.html ########## pour écrire le fichier html dans le répertoire 
  
        mv /repertoire /var/www/html
  
@@ -431,13 +432,13 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
        cd /var/www/html/repertoire 
      
-       mv adminsae21.html index.html 
+       mv cyberbridge.html index.html 
 
  
  * ÉTAPE 3 : on recopie le fichier de configuration /etc/apache2/sites-available/000-default.conf et on le renomme en adminsae21.conf en utilisant la commande cp :
  
  
-       cp 000-default.conf adminsae21.conf
+       cp 000-default.conf cyberbridge.conf
  
  
  * ÉTAPE 4 : ensuite, on modifie notre site en utilisant la commande, nano ,on change le server name par le nom de serveur que l’on veut et on change le répertoire de notre site en modifiant la ligne DocumentRoot :
@@ -445,7 +446,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
        <VirtualHost *:80>
         
-        ServerName www.adminsae21.fr          
+        ServerName www.cyberbridge.fr          
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html
         ErrorLog ${APACHE_LOG_DIR}/error.log
@@ -455,7 +456,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 
  * ÉTAPE 5 : on active ensuite notre site en utilisant la commande a2ensite :
  
-        a2ensite adminsae21.conf
+        a2ensite cyberbridge.conf
      
         systemctl reload apache2 ##### on utilise cette commande pour permettre la relecture des fichiers de configuration.
  
@@ -464,7 +465,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  
         #127.0.0.1       localhost
-        127.0.0.1        www.adminsae21.fr
+        127.0.0.1        www.cyberbridge.fr
         10.213.22.1     232-22
 
         # The following lines are desirable for IPv6 capable hosts

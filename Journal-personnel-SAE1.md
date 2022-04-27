@@ -11,6 +11,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  
  <br/>
+ <br/>
  
  ## *Scéance 2 ( Vendredi 08/04/2022 ) , configuration du routeur sur GNS3 :* 
 

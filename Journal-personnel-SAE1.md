@@ -1,4 +1,4 @@
- ## Scéance 1 ( Jeudi 23/03/2022 ) , Découvrir la SAE 21 :
+ ## *Scéance 1 ( Jeudi 23/03/2022 ) , Découvrir la SAE 21 :*
  
  <br/>
  
@@ -12,7 +12,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  <br/>
  
- ## Scéance 2 ( Vendredi 08/04/2022 ) , configuration du routeur sur GNS3 : 
+ ## *Scéance 2 ( Vendredi 08/04/2022 ) , configuration du routeur sur GNS3 :* 
 
 - Durant cette première scéance de SAE j'ai configuré mon routeur cisco sur GNS3, j'ai commencé d'abord par configurer les adresses IP des interfaces de mon routeur : 
 
@@ -61,7 +61,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         
 <br/> 
 
-## Séance 3 ( Jeudi 14/04/2022 ) (TD encadré ), configuration des VLAN sur le switch:
+## *Séance 3 ( Jeudi 14/04/2022 ) (TD encadré ), configuration des VLAN sur le switch :*
 ---
 
 * Pendant cette séance j'ai configuré le NAT pour chaque VLAN sur le routeur
@@ -95,7 +95,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
     
 <br/>    
         
-## Configuration des vlan sur le routeur:
+## *Configuration des vlan sur le routeur :*
 
 <br/>
 
@@ -142,7 +142,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         
 <br/>        
 
-## Scéance 4 ( Vendredi 15/04/2022 ) (TD non-encadré + TP encadré ) Configuration du pool DHCP pour chaque vlan :
+## *Scéance 4 ( Vendredi 15/04/2022 ) (TD non-encadré + TP encadré ) Configuration du pool DHCP pour chaque vlan :*
 
 <br/>
 
@@ -182,7 +182,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
   
 <br/>
 
-## configuration des ACL pour plus de sécurité : 
+## *Configuration des ACL pour plus de sécurité :* 
 
 <br/>
 
@@ -200,7 +200,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 
 <br/>
 
-## configuration du protocole SSH sur le routeur : 
+## *configuration du protocole SSH sur le routeur :* 
 
 <br/>
 
@@ -329,7 +329,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  <br/>
  
-## Scéance 5 ( Vendredi 21/04/2022 ) (TD non-encadré + encadré ) mise à jour des règles ACL sur le routeur du réseau virtuel : 
+## *Scéance 5 ( Vendredi 21/04/2022 ) (TD non-encadré + encadré ) mise à jour des règles ACL sur le routeur du réseau virtuel :*
  
  
        conf t
@@ -411,7 +411,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  <br/>
  
- ## configuration du serveur web :
+ ## *Configuration du serveur web :*
  
  <br/>
  * ÉTAPE 1 : j'ai mis mon code HTML dans un répertoire spécifique en utilisant la commande mkdir pour créer un nouveau répertoire pour le déplacer après vers le répertoire /etc/www/html :
@@ -477,7 +477,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         systemctl reload apache2
  <br/>
  
- ## Scéance 6 ( Lundi 25/04/2022 ) configuration du Firewall du routeur :
+ ## *Scéance 6 ( Lundi 25/04/2022 ) configuration du Firewall du routeur :*
  
  <br/>
 * Dans cette scéance , je me suis concentré sur la configuration du firewall de mon routeur mikrotik qui est relié au réseau de la salle, donc j'ai commencé par déterminer les trames qu'il faut laisser traverser notre routeur externe ainsi que les ports de ces paquets , ensuite j'ai regardé une vidéo sur les actions et les chain dans les filtres :

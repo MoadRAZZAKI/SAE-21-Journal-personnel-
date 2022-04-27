@@ -483,8 +483,9 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 * Dans cette scéance , je me suis concentré sur la configuration du firewall de mon routeur mikrotik qui est relié au réseau de la salle, donc j'ai commencé par déterminer les trames qu'il faut laisser traverser notre routeur externe ainsi que les ports de ces paquets , ensuite j'ai regardé une vidéo sur les actions et les chain dans les filtres :
  
  <br/>
+ <br/>
  
-* Comme on peut le voir, lorsque l'on tape la commande export sur le terminal du mikrotik,ça nous affiche toute les configuration du routeur , et si on regarde la partie IP Firewall Filter , on peut remarquer que j'ai laissé passer les paquets TCP port source : 80,443 ( pour les trames http/https ) , UDP port : 53 ( pour les trames DNS ) , UDP port source : 67 ( source des réponses du serveur DHCP ) , UDP port destination : 68 ( port du client DHCP ) , et j'ai laissé passer tous les paquets ICMP .
+* Comme on peut le remarquer, lorsque l'on tape la commande export sur le terminal du mikrotik,ça nous affiche toute les configuration du routeur , et si on regarde la partie IP Firewall Filter , on peut remarquer que j'ai laissé passer les paquets TCP port source : 80,443 ( pour les trames http/https ) , UDP port : 53 ( pour les trames DNS ) , UDP port source : 67 ( source des réponses du serveur DHCP ) , UDP port destination : 68 ( port du client DHCP ) , et j'ai laissé passer tous les paquets ICMP .
 
  <br/>
  

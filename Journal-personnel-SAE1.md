@@ -489,7 +489,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 
  <br/>
  
- * Comme vous pouvez le remarquer , pour tout les paquets que j'ai laissé traverser mon routeur j'ai choisi comme chain forward : car quand j'ai fait mes recherches j'ai compris qu'il existe trois types de chaine sur le firwall du routeur mikrotik :
+ * Ensuite comme vous pouvez le remarquer , pour tout les paquets que j'ai laissé traverser mon routeur j'ai choisi comme chain forward : car quand j'ai fait mes recherches j'ai compris qu'il existe trois types de chaine sur le firwall du routeur mikrotik :
 
  <br/>
  

@@ -335,17 +335,17 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
        conf t
        ip access-list extended VLAN10INOUT
-       permit udp any any eq 67  ##### cette commande permet de laisser passer tout les paquet UDP qui provient du port 67 
-       permit udp any any eq 68   ##### cette commande permet de laisser passer tout les paquet UDP qui provient du port 68
-       permit ip host 192.168.10.1 any
-       permit tcp 192.168.20.0 0.0.0.7 192.168.10.0 0.0.0.7 eq 22
-       deny ip 192.168.30.0 0.0.0.7 192.168.10.0 0.0.0.7
-       permit tcp any any eq 80
-       permit tcp any any eq 443
-       permit icmp any any 
-       permit ip any any 
-       permit tcp 192.168.10.0 0.0.0.7 192.168.20.0 0.0.0.7  established
-       permit tcp any any eq 22
+       permit udp any any eq 67  ##### cette commande permet de laisser passer tout les paquet UDP qui proviennent du port 67 
+       permit udp any any eq 68   ##### cette commande permet de laisser passer tout les paquet UDP qui proviennent du port 68
+       permit ip host 192.168.10.1 any      ##### pour laisser passer les paquets dont l'adresse IP est 192.168.10.1
+       permit tcp 192.168.20.0 0.0.0.7 192.168.10.0 0.0.0.7 eq 22 ##### autoriser l'accès des paquets TCP provenant du port 22 et dont l'adresse du réseau est 192.168.20.0
+       deny ip 192.168.30.0 0.0.0.7 192.168.10.0 0.0.0.7 ##### interdire le passage des paquets dont l'adresse source est 192.168.30.0/29 et de destination le réseau 192.168.10.0/29
+       permit tcp any any eq 80 ##### autoriser l'accès à tout les paquets TCP provenant du port 80 ( http )
+       permit tcp any any eq 443 ##### autoriser l'accès à tout les paquets TCP provenant du port 443 ( https )
+       permit icmp any any ##### autoriser l'accès à tout les paquets ICMP
+       permit ip any any ##### laisser passer le reste des paquets IP ( j'ai remarqué que lorsque j'enlevais cette condition j'arrivais pas à avoir accès à Internet donc je l'ai ajouté ) 
+       permit tcp 192.168.10.0 0.0.0.7 192.168.20.0 0.0.0.7  established ######## autoriser l'accès aux paquets TCP d'adresse source 192.168.10.0/29 et de destination le réseau 192.168.20.0/29 
+       permit tcp any any eq 22  ##### autoriser l'accès à tout les paquets TCP de port source 22
        exit
  
  
@@ -394,8 +394,8 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 
 
        interface FastEThernet 0/0.1
-       ip access-group VLAN10INOUT in
-       ip access-group VLAN10INOUT out
+       ip access-group VLAN10INOUT in ###### activation de l'accèss liste VLAN10INOUT sur l'entrée de la sous interface 0/0.1
+       ip access-group VLAN10INOUT out  ###### activation de l'accèss liste VLAN10INOUT sur la sortie de la sous interface 0/0.1
        interface FastEThernet 0/0.2
        ip access-group VLAN20INOUT in
        ip access-group VLAN20INOUT out

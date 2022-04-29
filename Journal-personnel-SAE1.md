@@ -435,7 +435,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
        mv cyberbridge.html index.html 
 
  
- * ÉTAPE 3 : on recopie le fichier de configuration /etc/apache2/sites-available/000-default.conf et on le renomme en adminsae21.conf en utilisant la commande cp :
+ * ÉTAPE 3 : on recopie le fichier de configuration /etc/apache2/sites-available/000-default.conf et on le renomme en cyberbridge.conf en utilisant la commande cp :
  
  
        cp 000-default.conf cyberbridge.conf

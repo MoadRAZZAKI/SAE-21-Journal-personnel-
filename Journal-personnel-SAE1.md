@@ -612,7 +612,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  
  
-         systemctl reload bind9 
+         systemctl restart bind9 
  
  
  

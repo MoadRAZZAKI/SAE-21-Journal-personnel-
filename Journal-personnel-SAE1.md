@@ -508,6 +508,111 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
  
 <br/>
+ 
 <br/>
+ 
+ ## *Configuration du serveur DNS :*
+
+
+
+
+## Configuration du fichier db.cyberbridge.fr ( notre fichier de zone ) :
+ 
+ 
+> tout d'abord on se déplace vers le répertoire /etc/bind : 
+
+> ensuite en utilisant la commande MV on renomme notre fichier db.local en db.cyberbridge.fr :
+ 
+ 
+        mv db.local db.cyberbridge.fr 
+ 
+ 
+ > après avoir changé le nom de notre fichier , on le modifie en utilisant la commande nano : 
+ 
+ 
+
+
+        ----------------------------------------------------------------------
+        ;
+        ; BIND data file for local loopback interface
+        ;
+        $TTL    604800
+        @       IN      SOA     213-13.cyberbridge.fr. root.cyberbridge.fr. (
+                                2         ; Serial
+                           604800         ; Refresh
+                            86400         ; Retry
+                          2419200         ; Expire
+                           604800 )       ; Negative Cache TTL
+        ;
+        @       IN      NS      213-13  // le hostname de notre machine 
+        213-13  IN      A       192.168.88.252 // l'adresse ip de notre serveur WEB 
+        www     IN      A       192.168.88.252
+        -----------------------------------------------------------------------
+
+## Configuration du fichier /etc/bind/named.conf.local :
+
+
+
+
+        ---------------------------------------------------------
+        //
+        // Do any local configuration here
+        //
+
+        // Consider adding the 1918 zones here, if they are not used in your
+        // organization
+        //include "/etc/bind/zones.rfc1918";
+
+          zone "cyberbridge.fr" {                  // le nom de zone de recherche directe
+                  type master;                            // le type de la zone de recherche directe
+                  file "/etc/bind/db.cyberbridge.fr";     // le fichier de configuration de la zone directe
+          };
+
+          zone "13.213.10.in-addr.arpa." {      // l'adresse de la zone de recherce inversée
+                  type master;                          // le type de la zone de recherche inversée
+                  file "/etc/bind/inverse";    // le fichier de configuration de la zone de recherche inversée
+          };
+
+        -------------------------------------------------------  
+
+
+## Configuration du fichier /etc/bind/named.conf.options :
+
+
+
+
+         --------------------------------------------------------
+         options {
+         directory "/var/cache/bind";
+
+         // If there is a firewall between you and nameservers you want
+         // to talk to, you may need to fix the firewall to allow multiple
+         // ports to talk.  See http://www.kb.cert.org/vuls/id/800113
+
+         // If your ISP provided one or more IP addresses for stable
+         // nameservers, you probably want to use them as forwarders.  
+         // Uncomment the following block, and insert the addresses replacing
+         // the all-0's placeholder.
+
+         forwarders { 8.8.8.8; }; // On y indique les adresses des serveurs DNS externes ( GOOGLE ) dans la section forwarders
+
+         //========================================================================
+         // If BIND logs error messages about the root key being expired,
+         // you will need to update your keys.  See https://www.isc.org/bind-keys
+         //========================================================================
+         dnssec-validation auto;
+
+         listen-on-v6 { any; };
+         };
+         ----------------------------------------------------------
+
+
+
+> après avoir finir toute les configurations, on tape la commande systemctl restart bind9 pour redémarrer notre service DNS
+
+
+
+ 
+ 
  
 <center><p>2022 &copy; Moad RAZZAKI -<span style="color:#3DFF05"> Tous droits réservés</span></p></center>

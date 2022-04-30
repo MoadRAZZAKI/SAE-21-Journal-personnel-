@@ -549,6 +549,18 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
         www     IN      A       192.168.88.252
         -----------------------------------------------------------------------
 
+ 
+ 
+ > ensuite, on recopie tout le contenu de ce fichier dans un fichier nommé " inverse " :
+ 
+ 
+ 
+         cp db.cyberbridge.fr inverse
+ 
+ 
+ <br/>
+ <br/>
+ 
 ## Configuration du fichier /etc/bind/named.conf.local :
 
 

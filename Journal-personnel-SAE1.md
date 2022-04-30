@@ -609,7 +609,21 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
 
 
 > après avoir finir toute les configurations, on tape la commande systemctl restart bind9 pour redémarrer notre service DNS
+ 
+ 
+ 
+         systemctl reload bind9 
+ 
+ 
+ 
 
+<br/>
+ <br/>
+ 
+<br/>
+ <br/>
+ 
+<br/>
 
 
  

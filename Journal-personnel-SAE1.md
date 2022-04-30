@@ -511,7 +511,7 @@ par la suite on s'est réparti les tâches, je me suis occupé de la partie virt
  
 <br/>
  
- ## *Configuration du serveur DNS :*
+ ## * Mise à jour de la configuration du serveur DNS :*
 
 
 
